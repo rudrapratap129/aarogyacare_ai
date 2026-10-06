@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AarogyaCare AI — intelligent health assistant prototype" />
+  <title>AarogyaCare AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" data-page="home">
+        <span class="brand-mark">✚</span>
+        <span>
+          <strong>AarogyaCare AI</strong>
+          <small>Intelligent Health Assistant</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button data-page="home">Home</button>
+        <button data-page="check">Check Symptoms</button>
+        <button data-page="dashboard">Dashboard</button>
+        <button data-page="reports">Reports</button>
+        <button data-page="timeline">Timeline</button>
+      </nav>
+      <div class="top-actions">
+        <select id="languageSelect" aria-label="Language">
+          <option value="en">English</option>
+          <option value="hi">हिन्दी</option>
+        </select>
+        <button id="themeBtn" class="icon-btn" title="Toggle theme">☾</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="page-home" class="page active">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow">SMART HEALTHCARE GUIDANCE</div>
+            <h1>Understand symptoms.<br><span>Know what to do next.</span></h1>
+            <p>Describe how you feel, answer a few adaptive questions, and get a clear, simple urgency guide.</p>
+            <div class="hero-actions">
+              <button class="primary-btn" data-page="check">Start symptom check →</button>
+              <button class="secondary-btn" data-page="dashboard">View dashboard</button>
+            </div>
+            <div class="trust-row">
+              <span>✓ Multi-language</span>
+              <span>✓ Health timeline</span>
+              <span>✓ User + doctor reports</span>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div class="pulse">
+              <span class="pulse-ring"></span>
+              <div class="pulse-icon">❤</div>
+            </div>
+            <h3>AI Health Guide</h3>
+            <p>Focused on clear next steps—not a diagnosis.</p>
+            <div class="mini-status">
+              <span class="dot"></span> Ready for your symptoms
+            </div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">WHY IT MATTERS</div>
+            <h2>Bridging the gap between ignored symptoms and timely care</h2>
+          </div>
+        </div>
+        <div class="feature-grid four">
+          <article class="info-card"><span class="card-icon">🩺</span><h3>AI Symptom Analysis</h3><p>Understands the symptom text you enter.</p></article>
+          <article class="info-card"><span class="card-icon">💬</span><h3>Dynamic Questions</h3><p>Follow-up questions adapt to your answers.</p></article>
+          <article class="info-card"><span class="card-icon">📄</span><h3>Smart Reports</h3><p>Simple user view plus a clinician-friendly summary.</p></article>
+          <article class="info-card"><span class="card-icon">🚨</span><h3>Emergency Alerts</h3><p>Potentially risky entries are highlighted for urgent action.</p></article>
+        </div>
+
+        <div class="mission-banner">
+          <div><span class="eyebrow">HOW IT WORKS</span><h2>Input → AI Interview → Assessment → Urgency → Report → Timeline</h2></div>
+          <button class="primary-btn" data-page="check">Try the flow</button>
+        </div>
+      </section>
+
+      <section id="page-check" class="page">
+        <div class="page-title">
+          <div><div class="eyebrow">01 · USER INPUT</div><h1>Tell AarogyaCare AI how you feel</h1><p>Write symptoms in your own words. You can use English or Hindi.</p></div>
+          <span class="step-pill">Step 1 of 3</span>
+        </div>
+        <div class="check-layout">
+          <div class="glass-card symptom-card">
+            <label for="symptoms">Symptoms</label>
+            <textarea id="symptoms" rows="7" placeholder="Example: I have fever and a sore throat since yesterday..."></textarea>
+            <div class="quick-chips">
+              <button data-symptom="I have fever and headache.">Fever + headache</button>
+              <button data-symptom="I have a cough and sore throat.">Cough + sore throat</button>
+              <button data-symptom="I have stomach pain and nausea.">Stomach discomfort</button>
+            </div>
+            <button id="startInterview" class="primary-btn wide">Continue to AI interview →</button>
+          </div>
+          <aside class="side-note">
+            <div class="note-icon">🔐</div>
+            <h3>Safety first</h3>
+            <p>This prototype gives educational guidance and an urgency cue. It does not diagnose or replace a qualified healthcare professional.</p>
+            <div class="note-divider"></div>
+            <div class="tiny-stat"><strong>6-step</strong><span>workflow from input to timeline</span></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="page-interview" class="page">
+        <div class="page-title">
+          <div><div class="eyebrow">02 · AI INTERVIEW</div><h1>Answer a few follow-up questions</h1><p>These questions help the prototype understand your situation better.</p></div>
+          <span class="step-pill">Step 2 of 3</span>
+        </div>
+        <div class="glass-card">
+          <div id="questionList" class="question-list"></div>
+          <button id="runAssessment" class="primary-btn wide">Generate health guidance →</button>
+        </div>
+      </section>
+
+      <section id="page-result" class="page">
+        <div class="page-title">
+          <div><div class="eyebrow">03 · HEALTH ASSESSMENT</div><h1>Your AarogyaCare AI guidance</h1><p>Review the urgency cue and suggested next steps.</p></div>
+          <button class="secondary-btn" data-page="check">Start another check</button>
+        </div>
+        <div class="result-grid">
+          <div class="glass-card">
+            <div id="urgencyBadge" class="urgency-badge success">Routine</div>
+            <h2 id="resultSummary">Assessment summary</h2>
+            <div class="divider"></div>
+            <h3>Suggested next steps</h3>
+            <div id="guidanceList" class="guidance-list"></div>
+            <div class="disclaimer" id="resultDisclaimer"></div>
+          </div>
+          <div class="glass-card">
+            <h3>Actions</h3>
+            <button id="saveReport" class="action-row">📄 Save user report <span>→</span></button>
+            <button id="doctorReport" class="action-row">🩺 Create doctor summary <span>→</span></button>
+            <a class="action-row" target="_blank" rel="noopener" href="https://www.google.com/maps/search/hospitals+near+me">🏥 Find nearby hospitals <span>↗</span></a>
+            <button class="action-row" data-page="timeline">🕘 Open health timeline <span>→</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-dashboard" class="page">
+        <div class="page-title">
+          <div><div class="eyebrow">SMART DASHBOARD</div><h1>Your health story, in one place</h1><p>Reports, wellness tracking, theme controls and your timeline.</p></div>
+        </div>
+        <div class="dashboard-grid">
+          <div class="metric glass-card"><span>Saved reports</span><strong id="reportCount">0</strong><small>All reports in one place</small></div>
+          <div class="metric glass-card"><span>Checks this month</span><strong id="checkCount">0</strong><small>Based on your timeline</small></div>
+          <div class="metric glass-card"><span>Current theme</span><strong id="themeLabel">Light</strong><small>Customize the look</small></div>
+          <div class="metric glass-card"><span>Language</span><strong id="languageLabel">English</strong><small>Use your preferred language</small></div>
+        </div>
+        <div class="dashboard-panels">
+          <div class="glass-card"><div class="panel-head"><h3>Recent activity</h3><button data-page="timeline" class="text-btn">View all</button></div><div id="recentActivity" class="activity-list"></div></div>
+          <div class="glass-card wellness">
+  <div class="panel-head">
+    <h3>Health Overview</h3>
+    <span>Today</span>
+  </div>
+
+  <div class="wellness-ring" id="wellnessScore">72</div>
+
+  <div id="wellnessText">
+    <p>Keep tracking how you feel.</p>
+  </div>
+</div>
+        </div>
+      </section>
+
+      <section id="page-reports" class="page">
+        <div class="page-title">
+          <div><div class="eyebrow">REPORTS & SAFETY</div><h1>Reports and emergency assistance</h1><p>Keep your health summaries organized and easy to share.</p></div>
+          <button class="primary-btn" data-page="check">+ New report</button>
+        </div>
+        <div class="report-tabs">
+          <button class="tab active" data-tab="user">User reports</button>
+          <button class="tab" data-tab="doctor">Doctor summaries</button>
+        </div>
+        <div id="reportsList" class="reports-list"></div>
+      </section>
+
+      <section id="page-timeline" class="page">
+        <div class="page-title">
+          <div><div class="eyebrow">HEALTH TIMELINE</div><h1>Track changes over time</h1><p>A simple day-by-day health story for your records.</p></div>
+        </div>
+        <div id="timelineList" class="timeline"></div>
+      </section>
+
+      <section id="page-about" class="page">
+        <div class="page-title">
+          <div><div class="eyebrow">PROJECT</div><h1>AarogyaCare AI</h1><p>College technical-event prototype inspired by the project presentation.</p></div>
+        </div>
+        <div class="feature-grid three">
+          <article class="info-card"><span class="card-icon">⚛</span><h3>Frontend</h3><p>Designed around the presentation stack: React-style component thinking, TypeScript-friendly structure and Tailwind-inspired utility styling.</p></article>
+          <article class="info-card"><span class="card-icon">⌁</span><h3>Backend</h3><p>Node.js + Express API endpoint for assessments and report storage.</p></article>
+          <article class="info-card"><span class="card-icon">✦</span><h3>AI Engine</h3><p>Optional OpenAI Responses API integration; without a key, the app uses a local demo engine.</p></article>
+        </div>
+        <div class="future">
+          <div class="eyebrow">FUTURE SCOPE</div>
+          <h2>Smartwatch · Wearables · Health Analytics · AI Voice · Telemedicine · Family Profiles</h2>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>AarogyaCare AI</span>
+      <span>“Empowering People with Smarter Healthcare Through AI”</span>
+    </footer>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
